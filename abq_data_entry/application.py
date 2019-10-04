@@ -1,5 +1,12 @@
+"""
+This is considered the CONTROLLER in MVC.
+Starts and stops the application.
+Calls for data manipulation--but data is *not* here, in models.
+"""
+
 import tkinter as tk
 from tkinter import ttk
+from tkinter import messagebox
 from datetime import datetime
 from . import views as v
 from . import models as m
@@ -42,7 +49,12 @@ class Application(tk.Tk):
     if errors:
       self.status.set(
               "Cannot save, error in fields:\n{}".format(', '.join(errors.keys())))
+      message = "Cannot save record"
+      detail = "The following fields have errors: \n * {}".format('\n * '.join(errors.keys()))
+      messagebox.showerror(title='Form Error', message=message, detail=detail)
       return False
+
+    
 
     # For now, we save to a hardcoded filename with a datestring
     datestring = datetime.today().strftime("%Y-%m-%d")    # Create variable datestring in yyyy-mm-dd format
@@ -60,3 +72,64 @@ class Application(tk.Tk):
     self.status.set(
       "{} records saved this session".format(self.records_saved))
     self.recordform.reset()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
